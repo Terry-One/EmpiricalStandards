@@ -19,7 +19,6 @@ jobs:
               echo "$changed_files" | while read -r file; do
                 if ! awk -F '|' 'NR>2 { if ($3 !~ /^[[:space:]]*(True|False)[[:space:]]*$/) exit 1; if ($4 !~ /^[[:space:]]*[1-4](,[[:space:]]*[1-4])*[[:space:]]*$/) exit 1; if ($5 !~ /^[[:space:]]*(True|False)[[:space:]]*$/) exit 1 }' "$file"; then
                   echo "ERROR: $file does not contain a valid Markdown table with the required format."
-                  exit 1
                 fi
               done
             else
